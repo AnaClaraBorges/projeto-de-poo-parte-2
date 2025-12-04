@@ -43,3 +43,20 @@ private void desenharQuadradoPreenchido(Graphics g) {
         
         g.setColor(new Color(34, 139, 34));
         g.fillRect(x, y, tamanho, tamanho);
+        
+        g.setColor(Color.BLACK);
+        g.drawString(String.format("Lado: %.1f (Escala: 1:15)", lado), x, y - 5);
+        g.drawString(String.format("Área: %.1f", lado * lado), x, y + tamanho + 15);
+        g.drawString(String.format("Tamanho visual: %d pixels", tamanho), x, y + tamanho + 30);
+    }
+    
+    public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        SwingUtilities.invokeLater(() -> new GeometriaQuadrado().setVisible(true));
+    }
+}
